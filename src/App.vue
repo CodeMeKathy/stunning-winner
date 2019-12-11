@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
+    
+    <!-- Passing through a message prop -->
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
@@ -16,6 +18,7 @@ export default {
 }
 </script>
 
+// Global Stying
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

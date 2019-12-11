@@ -1,4 +1,5 @@
 <template>
+<!-- Template takes in a single element, never more than one -->
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
