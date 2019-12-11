@@ -2,17 +2,25 @@
   <div id="app">
     <!-- V Bind allows data to be passed through to components as props. -->
     <!-- There are many types of template directives -->
+
+    <Header />
+    <!-- Use v-on to catch the child component emit -->
+    <AddTodo v-on:add-todo="addTodo" />
     <Todos v-bind:todos="todos" v-on:delete-todo="deleteTodo" />
   </div>
 </template>
 
 <script>
+import Header from './components/layout/Header'
 import Todos from './components/Todos'
+import AddTodo from './components/AddTodo'
 
 export default {
   name: 'app',
   components: {
-    Todos
+    Header,
+    Todos,
+    AddTodo
   },
 
   // data is function returning an object
@@ -22,7 +30,7 @@ export default {
         {
           id: '1',
           title: 'Clean Kitchen',
-          completed: 'true'
+          completed: 'false'
         },
         {
           id: '2',
@@ -32,7 +40,7 @@ export default {
         {
           id: '3',
           title: 'Complete Vue Crash Course',
-          completed: 'true'
+          completed: 'false'
         },
         {
           id: '4',
@@ -50,6 +58,9 @@ export default {
   methods: {
     deleteTodo(id) {
       this.todos = this.todos.filter(todo => todo.id !== id)
+    },
+    addTodo(newTodo) {
+      this.todos = { ...this.todos, newTodo }
     }
   }
 }
@@ -64,5 +75,17 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  background: #555;
+  color: #fff;
+  padding: 7px 20px;
+  cursor: pointer;
+}
+.btn:hover {
+  background: #666;
 }
 </style>
