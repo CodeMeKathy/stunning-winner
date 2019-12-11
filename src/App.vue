@@ -15,6 +15,8 @@ import Header from './components/layout/Header'
 import Todos from './components/Todos'
 import AddTodo from './components/AddTodo'
 
+import axios from 'axios'
+
 export default {
   name: 'app',
   components: {
@@ -62,6 +64,12 @@ export default {
     addTodo(newTodo) {
       this.todos = { ...this.todos, newTodo }
     }
+  },
+  created() {
+    axios
+      .get('http://jsonplacholder.typicode/todos?_limit=10')
+      .then(res => (this.todos = res.data))
+      .catch(error => console.error(error))
   }
 }
 </script>
