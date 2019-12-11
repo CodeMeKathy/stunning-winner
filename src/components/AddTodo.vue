@@ -1,7 +1,7 @@
 <template>
   <div>
     <form @submit="addTodo">
-      <!-- The data needs to be travered up to the parent -->
+      <!-- The data needs to be traversed up to the parent -->
       <input
         type="text"
         v-model="title"
@@ -14,8 +14,6 @@
 </template>
 
 <script>
-import uuid from 'uuid'
-
 export default {
   name: 'AddTodo',
   data() {
@@ -27,7 +25,6 @@ export default {
     addTodo(e) {
       e.preventDefault()
       const newTodo = {
-        id: uuid.v4(),
         title: this.title,
         completed: false
       }
