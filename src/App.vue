@@ -1,19 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    
-    <!-- Passing through a message prop -->
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    {{msg}}
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    
+  },
+
+  // data is function returning an object
+  data() {
+    return {
+      msg: 'Hello'
+    }
   }
 }
 </script>
