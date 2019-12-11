@@ -1,23 +1,55 @@
 <template>
   <div id="app">
-
-    {{msg}}
-
+    <!-- V Bind allows data to be passed through to components as props. -->
+    <!-- There are many types of template directives -->
+    <Todos v-bind:todos="todos" v-on:delete-todo="deleteTodo" />
   </div>
 </template>
 
 <script>
+import Todos from './components/Todos'
 
 export default {
   name: 'app',
   components: {
-    
+    Todos
   },
 
   // data is function returning an object
   data() {
     return {
-      msg: 'Hello'
+      todos: [
+        {
+          id: '1',
+          title: 'Clean Kitchen',
+          completed: 'true'
+        },
+        {
+          id: '2',
+          title: 'Laundry',
+          completed: 'false'
+        },
+        {
+          id: '3',
+          title: 'Complete Vue Crash Course',
+          completed: 'true'
+        },
+        {
+          id: '4',
+          title: 'Complete React ZTM',
+          completed: 'false'
+        },
+        {
+          id: '5',
+          title: 'Git Sh*t Done',
+          completed: 'false'
+        }
+      ]
+    }
+  },
+  methods: {
+    deleteTodo(id) {
+      this.todos = this.todos.filter(todo => todo.id !== id)
     }
   }
 }
